@@ -288,12 +288,12 @@ endif
         hi PmenuSbar ctermfg=darkcyan ctermbg=lightgray
         hi PmenuThumb ctermfg=lightgray ctermbg=darkgray
 
-        inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
-        inoremap <expr> <CR>        pumvisible() ? "\<C-y>" : "\<CR>"
-        inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
-        inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"
-        inoremap <expr> <C-d>       pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        inoremap <expr> <C-u>       pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+        "inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
+        "inoremap <expr> <CR>        pumvisible() ? "\<C-y>" : "\<CR>"
+        "inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
+        "inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"
+        "inoremap <expr> <C-d>       pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+        "inoremap <expr> <C-u>       pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
         " Automatically open and close the popup menu / preview window
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -357,19 +357,19 @@ endif
             " These two lines conflict with the default digraph mapping of <C-K>
             imap <C-k> <Plug>(neosnippet_expand_or_jump)
             smap <C-k> <Plug>(neosnippet_expand_or_jump)
-            if exists('g:spf13_noninvasive_completion')
-                iunmap <CR>
-                " <ESC> takes you out of insert mode
-                inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
-                " <CR> accepts first, then sends the <CR>
-                inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-                " <Down> and <Up> cycle like <Tab> and <S-Tab>
-                inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
-                inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
-                " Jump up and down the list
-                inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-                inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-            else
+            "if exists('g:spf13_noninvasive_completion')
+                "iunmap <CR>
+                "" <ESC> takes you out of insert mode
+                "inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+                "" <CR> accepts first, then sends the <CR>
+                "inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+                "" <Down> and <Up> cycle like <Tab> and <S-Tab>
+                "inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+                "inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
+                "" Jump up and down the list
+                "inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+                "inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+            "else
                 imap <silent><expr><C-k> neosnippet#expandable() ?
                             \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
                             \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
@@ -387,7 +387,7 @@ endif
                 " <C-h>, <BS>: close popup and delete backword char.
                 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
                 inoremap <expr><C-y> neocomplcache#close_popup()
-            endif
+            "endif
             " <TAB>: completion.
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
             inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
