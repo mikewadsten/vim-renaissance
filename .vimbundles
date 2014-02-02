@@ -1,0 +1,68 @@
+" Set up bundle support
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" Bundling dependencies {
+    " This one is undeniably necessary
+    Bundle 'gmarik/vundle'
+    " spf13 uses these, I guess I'll include them
+    Bundle 'MarcWeber/vim-addon-mw-utils'
+    Bundle 'tomtom/tlib_vim'
+" }
+
+" Solarized color scheme
+Bundle 'altercation/vim-colors-solarized'
+" A most excellent status line replacement
+Bundle 'bling/vim-airline'
+" List buffers
+Bundle 'bling/vim-bufferline'
+" Intensely orgasmic commenting
+Bundle 'scrooloose/nerdcommenter'
+" Remember folds
+Bundle 'vim-scripts/restore_view.vim'
+
+" Snippets and autocomplete
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet'
+Bundle 'honza/vim-snippets'
+
+" Auto-close pairs
+Bundle 'Townk/vim-autoclose'
+" Quoting/parenthesizing made simple
+Bundle 'tpope/vim-surround'
+
+" Fuzzy finding FTW
+Bundle 'kien/ctrlp.vim'
+" Sublime Text-like multiple cursors
+Bundle 'terryma/vim-multiple-cursors'
+
+" Motion on speed
+Bundle 'Lokaltog/vim-easymotion'
+
+" Decent colors workings
+Bundle 'godlygeek/csapprox'
+
+" Undoing made easy?
+Bundle 'mbbill/undotree'
+" Visual indentation guides
+Bundle 'nathanaelkane/vim-indent-guides'
+" Git diff in sign column
+Bundle 'airblade/vim-gitgutter'
+
+" For when you just can't spell correctly.
+Bundle 'tpope/vim-abolish'
+" Substitution previews
+Bundle 'osyo-manga/vim-over'
+" Even better motion
+Bundle 'justinmk/vim-sneak'
+
+" Text filtering and alignment
+Bundle 'godlygeek/tabular'
+
+" Markdown files
+Bundle 'tpope/vim-markdown'
+" Preview
+Bundle 'spf13/vim-preview'
+
+" TODO: Add more bundles from spf13 and my own dotfiles...
