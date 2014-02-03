@@ -15,6 +15,7 @@ call vundle#rc()
 Bundle 'altercation/vim-colors-solarized'
 " A most excellent status line replacement
 Bundle 'bling/vim-airline'
+" TODO: Look into itchyny/lightline.vim as a simpler statusline
 " List buffers
 Bundle 'bling/vim-bufferline'
 " Intensely orgasmic commenting
@@ -85,4 +86,7 @@ endif
 " Repeat plugin actions with .
 Bundle 'tpope/vim-repeat'
 
-
+" tmux status line theme generator
+Bundle 'edkolev/tmuxline.vim'
+" Tmux file syntax highlighting
+Bundle 'peterhoeg/vim-tmux'

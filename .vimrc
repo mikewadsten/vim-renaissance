@@ -2,6 +2,12 @@
 " almost totally inspired by Learn Vimscript the Hard Way exercises,
 " with various content lifted from spf13-vim
 
+" Core toggles that I may want to hit later {
+    " Value used for g:solarized_termtrans, to either let the terminal
+    " background color shine through (1) or use a nice dark gray (0)
+    let s:use_terminal_background = 1
+" }
+
 " Platform checking functions {
 silent function! LINUX()
     return has('unix') && !has('macunix') && !has('win32unix')
@@ -73,6 +79,7 @@ endif
     endif
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
+        let g:solarized_termtrans = s:use_terminal_background
         let g:solarized_contrast="high"
         "let g:solarized_visibility="normal"
         "let g:solarized_bold=1
@@ -485,6 +492,7 @@ endif
                     \ [ 'x', 'y', 'z', 'warning' ]
                     \ ]
 
+
         let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'Nrm',
@@ -498,6 +506,11 @@ endif
             \ 'S'  : 'SLine',
             \ '' : 'SBlock'
             \ }
+    " }
+
+    " tmuxline.vim {
+        " Disable automati rejiggering of tmux statusbar color theme.
+        let g:airline#extensions#tmuxline#enabled = 0
     " }
 " }
 
