@@ -66,3 +66,23 @@ Bundle 'tpope/vim-markdown'
 Bundle 'spf13/vim-preview'
 
 " TODO: Add more bundles from spf13 and my own dotfiles...
+" Git wrapper
+Bundle 'tpope/vim-fugitive'
+
+" Web API access from Vim
+Bundle 'mattn/webapi-vim'
+
+" Python stuff
+Bundle 'python.vim'
+Bundle 'python_match.vim'
+Bundle 'pythoncomplete'
+Bundle 'nvie/vim-flake8'
+if has("python")
+    Bundle 'mikewadsten/Conque-Shell'
+endif
+" TODO: Add python-mode if I really feel like it
+
+" Repeat plugin actions with .
+Bundle 'tpope/vim-repeat'
+
+
