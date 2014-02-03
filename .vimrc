@@ -13,8 +13,10 @@ silent function! LINUX()
     return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
 
+" Make Vim less like Vi
 set nocompatible
 
+" Source my bundles file.
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
 endif
@@ -509,8 +511,10 @@ endif
     " }
 
     " tmuxline.vim {
-        " Disable automati rejiggering of tmux statusbar color theme.
+        " Disable automatic rejiggering of tmux statusbar color theme.
         let g:airline#extensions#tmuxline#enabled = 0
+        " Disable powerline symbols as section separators
+        let g:tmuxline_powerline_separators = 0
     " }
 " }
 
