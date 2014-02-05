@@ -523,11 +523,6 @@ iabbrev adn and
 iabbrev th the
 " doesn't tpope have a plugin for this? abolish?
 
-" fun little abbreviations
-" yeah, I'll probably dig into using a snippets manager later
-autocmd FileType python        :iabbrev <buffer> iff if:<left>
-autocmd FileType python        :iabbrev <buffer> rrr return
-autocmd FileType python        :iabbrev <buffer> return AH_AH_AH\!
 " Don't auto-close double-quotes since those are comments.
 autocmd FileType vim            let g:AutoClosePairs_del .= '"'
 
