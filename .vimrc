@@ -98,7 +98,6 @@ endif
 
     if has('statusline')
         set laststatus=2
-        " TODO: Bundle vim-airline for this
     endif
 
     set backspace=indent,eol,start      " Backspace for dummies
@@ -468,46 +467,45 @@ endif
     " }
 
     " vim-airline {
-        if !exists('g:airline_powerline_fonts')
-            "let g:airline_left_sep='›'
-            "let g:airline_right_sep='‹'
-            let g:airline_left_sep = ''
-            let g:airline_right_sep = ''
-            let g:airline_symbols = {}
-            let g:airline_left_sep = '⮀'
-            let g:airline_left_alt_sep = '⮁'
-            let g:airline_right_sep = '⮂'
-            let g:airline_right_alt_sep = '⮃'
-            let g:airline_symbols.branch = '⭠'
-            let g:airline_symbols.readonly = '⭤'
-            let g:airline_symbols.linenr = '⭡'
-        endif
-
         if exists('g:loaded_airline')
             set noshowmode  " Airline shows mode.
+            if !exists('g:airline_powerline_fonts')
+                "let g:airline_left_sep='›'
+                "let g:airline_right_sep='‹'
+                let g:airline_left_sep = ''
+                let g:airline_right_sep = ''
+                let g:airline_symbols = {}
+                let g:airline_left_sep = '⮀'
+                let g:airline_left_alt_sep = '⮁'
+                let g:airline_right_sep = '⮂'
+                let g:airline_right_alt_sep = '⮃'
+                let g:airline_symbols.branch = '⭠'
+                let g:airline_symbols.readonly = '⭤'
+                let g:airline_symbols.linenr = '⭡'
+            endif
+
+            let g:airline#extensions#hunks#non_zero_only = 1
+            let g:airline#extensions#default#section_truncate_width = {}
+            let g:airline#extensions#default#layout = [
+                        \ [ 'a', 'b' ],
+                        \ [ 'x', 'y', 'z', 'warning' ]
+                        \ ]
+
+
+            let g:airline_mode_map = {
+                \ '__' : '-',
+                \ 'n'  : 'Nrm',
+                \ 'i'  : 'Ins',
+                \ 'R'  : 'Rep',
+                \ 'c'  : 'Cmd',
+                \ 'v'  : 'Vis',
+                \ 'V'  : 'VLine',
+                \ '' : 'VBlock',
+                \ 's'  : 'Sel',
+                \ 'S'  : 'SLine',
+                \ '' : 'SBlock'
+                \ }
         endif
-
-        let g:airline#extensions#hunks#non_zero_only = 1
-        let g:airline#extensions#default#section_truncate_width = {}
-        let g:airline#extensions#default#layout = [
-                    \ [ 'a', 'b' ],
-                    \ [ 'x', 'y', 'z', 'warning' ]
-                    \ ]
-
-
-        let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'Nrm',
-            \ 'i'  : 'Ins',
-            \ 'R'  : 'Rep',
-            \ 'c'  : 'Cmd',
-            \ 'v'  : 'Vis',
-            \ 'V'  : 'VLine',
-            \ '' : 'VBlock',
-            \ 's'  : 'Sel',
-            \ 'S'  : 'SLine',
-            \ '' : 'SBlock'
-            \ }
     " }
 
     " tmuxline.vim {
@@ -516,6 +514,15 @@ endif
         " Disable powerline symbols as section separators
         let g:tmuxline_powerline_separators = 0
     " }
+
+    " TagBar {
+        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+    " }
+
+    " Lightline.vim {
+        let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ }
 " }
 
 " auto correct ftw
@@ -567,30 +574,4 @@ autocmd FileType vim            let g:AutoClosePairs_del .= '"'
         endfor
     endfunction
     call InitializeDirectories()
-
-    function! AirlineInit()
-        let g:airline_section_a =
-                    \airline#section#create(['mode', ' ', 'branch'])
-        let g:airline_section_b =
-                    \airline#section#create(['%<', 'readonly', 'file'])
-
-        let g:airline_section_x =
-                    \airline#section#create_right(['filetype', 'ffenc'])
-        let g:airline_section_y =
-                    \airline#section#create(['hunks'])
-        let g:airline_section_z =
-                    \airline#section#create(['linenr', ':%3c '])
-        let g:airline_section_warning =
-                    \airline#section#create(['syntastic', 'whitespace'])
-        "let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
-        "let g:airline_section_b = airline#section#create(['hunks'])
-        "let g:airline_section_c = airline#section#create(['%<', 'readonly', 'file'])
-        "let g:airline_section_gutter = airline#section#create(['%='])
-        "let g:airline_section_x = airline#section#create_right(['filetype', 'ffenc'])
-        "let g:ailine_section_y = ""
-        "let g:airline_section_z = airline#section#create(['linenr', ':%3c '])
-        "let g:airline_section_warning = airline#section#create(['syntastic', 'whitespace'])
-    endfunction
-
-    autocmd VimEnter * call AirlineInit()
 " }

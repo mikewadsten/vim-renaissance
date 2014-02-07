@@ -14,8 +14,9 @@ call vundle#rc()
 " Solarized color scheme
 Bundle 'altercation/vim-colors-solarized'
 " A most excellent status line replacement
-Bundle 'bling/vim-airline'
+"Bundle 'bling/vim-airline'
 " TODO: Look into itchyny/lightline.vim as a simpler statusline
+Bundle 'itchyny/lightline.vim'
 " List buffers
 Bundle 'bling/vim-bufferline'
 " Intensely orgasmic commenting
@@ -93,3 +94,6 @@ Bundle 'peterhoeg/vim-tmux'
 
 " Asynchronous build and test dispatching
 Bundle 'tpope/vim-dispatch'
+
+" ctags integration
+Bundle 'majutsushi/tagbar'
