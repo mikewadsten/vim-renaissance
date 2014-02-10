@@ -69,7 +69,7 @@ set expandtab
 set shiftwidth=4
 set shiftround
 
-" Vundle no le gusta alugnas shells
+" Vundle no le gusta algunas shells
 if &shell =~# 'fish$'
     set shell=/bin/bash
 endif
