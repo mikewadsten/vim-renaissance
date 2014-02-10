@@ -192,6 +192,7 @@ endif
     noremap j gj
     noremap k gk
 
+    " Opposite of 'J'; splits line at cursor position
     nnoremap K i<CR><Esc>
 
     " Stupid shift key fixes
