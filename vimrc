@@ -104,7 +104,7 @@ endif
     set number                          " Show line numbers
     set showmatch                       " Highlight matching parens/brackets
     set incsearch                       " Find results as you type
-    set hlsearch                        " Highlight search terms"
+    set hlsearch                        " Highlight search terms
     set ignorecase                      " Case-insensitive search
     set smartcase                       " Case-sensitive if uppercase present
     "set wildmenu                        " Show list instead of completing
