@@ -274,10 +274,10 @@ endif
     nnoremap H 0
     nnoremap L $
 
-    " because Escape is way the fuck over there
+    " because Escape is way over there
     inoremap jk <esc>
-    " let's learn this shit the hard way
-    inoremap <esc> <nop>
+    " let's learn this mapping the hard way
+    "inoremap <esc> <nop>
     " while we're at it, let's keep the arrows disabled
     noremap <Up> <nop>
     noremap <Down> <nop>
