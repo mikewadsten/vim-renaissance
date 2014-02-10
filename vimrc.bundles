@@ -1,3 +1,8 @@
+" Needed for bootstrap.sh script to work right
+set nocp
+" Suppress csapprox warnings when using bootstrap.sh
+set t_Co=256
+
 " Set up bundle support
 filetype off
 set runtimepath+=~/.vim/bundle/vundle
