@@ -16,6 +16,6 @@ Feast your eyes on this screenshot:
 Clone this repository, and run the [bootstrap.sh](bootstrap.sh) script:
 
 ```bash
-git clone https://github.com/mikewadsten/vim-renaissance
-bash vim-renaissance/bootstrap.sh
+$ git clone https://github.com/mikewadsten/vim-renaissance
+$ bash vim-renaissance/bootstrap.sh
 ```
