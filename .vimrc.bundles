@@ -98,3 +98,6 @@ Bundle 'tpope/vim-dispatch'
 
 " ctags integration
 Bundle 'majutsushi/tagbar'
+
+" Stuff, and things.
+Bundle 'tpope/vim-scriptease'
