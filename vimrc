@@ -520,7 +520,17 @@ endif
     " }
 
     " TagBar {
+        " ,tt to toggle Tagbar window.
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        " ,to to open Tagbar, or jump to it if it's open.
+        nnoremap <silent> <leader>to :TagbarOpen fj<CR>
+        " ,tl to switch out of Tagbar window (actually, to switch windows
+        " period...)
+        nnoremap <silent> <leader>tl <c-w>w
+        " ,w to switch windows. Fits in nicely with Tagbar use.
+        nnoremap <silent> <leader>w <c-w>w
+        " ,W to switch to previous window
+        nnoremap <silent> <leader>W <c-w>W
     " }
 
     " Lightline.vim {
