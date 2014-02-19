@@ -82,7 +82,7 @@ Bundle 'mattn/webapi-vim'
 " Python stuff
 Bundle 'python.vim'
 Bundle 'python_match.vim'
-Bundle 'pythoncomplete'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'olethanh/Vim-nosecompiler'
 if has("python")

@@ -290,6 +290,9 @@ endif
     vnoremap <leader>d "_dd
     " screw you, shift key
     nnoremap ; :
+
+    " I don't want to press the shift key to force exit anymore.
+    cabbrev q1 q!<CR>
 " }
 
 " Plugins {
@@ -418,7 +421,6 @@ endif
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
         autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
@@ -683,6 +685,14 @@ endif
         let g:indent_guides_auto_colors = 0
         autocmd VimEnter,ColorScheme * :hi IndentGuidesEven ctermbg=239
         autocmd VimEnter,ColorScheme * :hi IndentGuidesOdd ctermbg=236
+    " }
+
+    " jedi-vim {
+        let g:jedi#use_tabs_not_buffers = 0
+        let g:jedi#use_splits_not_buffers = "left"
+        let g:jedi#documentation_command = ""
+        let g:jedi#goto_definitions_command = "<leader>jd"
+        let g:jedi#goto_assignments_command = "<leader>ja"
     " }
 " }
 
