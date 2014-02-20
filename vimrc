@@ -542,7 +542,7 @@ endif
         " A really decent lightline configuration.
         " https://github.com/itchyny/lightline.vim/issues/36
         let g:lightline = {
-            \ 'colorscheme': 'jellybeans',
+            \ 'colorscheme': 'wombat',
             \ 'active': {
             \   'left': [
             \       ['mode', 'paste'],
@@ -693,6 +693,8 @@ endif
         let g:jedi#documentation_command = ""
         let g:jedi#goto_definitions_command = "<leader>jd"
         let g:jedi#goto_assignments_command = "<leader>ja"
+
+        let g:jedi#popup_on_dot = 0
     " }
 " }
 
