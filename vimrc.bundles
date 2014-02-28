@@ -106,3 +106,5 @@ Bundle 'majutsushi/tagbar'
 
 " Stuff, and things.
 Bundle 'tpope/vim-scriptease'
+
+Bundle 'tpope/vim-vinegar'

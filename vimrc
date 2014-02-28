@@ -33,6 +33,11 @@ if has('clipboard') && LINUX()
     set clipboard=unnamedplus    " Use + register for copy-paste
 endif
 
+if has('gui')
+    " Set font in MacVim
+    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14
+endif
+
 " Switch to current file directory automatically
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
@@ -53,6 +58,9 @@ set hidden                  " Allow buffer switching sans save
 
 " Restore cursor to file position in previous editing session
 function! RestoreCursor()
+    if &filetype == "netrw"
+        return 1
+    endif
     if line("'\"") <= line("$")
         normal! g`"
         return 1
@@ -61,6 +69,12 @@ endfunction
 augroup resCur
     autocmd!
     autocmd BufWinEnter * call RestoreCursor()
+augroup END
+
+" Use = to close vinegar browser.
+augroup mikeVinegar
+    autocmd!
+    autocmd FileType netrw nmap <buffer> <silent> = :bd<CR>
 augroup END
 
 " core indentation settings
@@ -258,9 +272,9 @@ endif
 
     " easy line movement
     " up... (+ requires shift but = doesn't work)
-    nnoremap + ddkP
+    "nnoremap + ddkP
     " and down
-    nnoremap - ddp
+    "nnoremap - ddp
 
     " ctrl-u to uppercase the current word when in normal mode
     " mark (k), upper case the word, go back to (k)
@@ -332,7 +346,7 @@ endif
         let g:ctrlp_switch_buffer = 'e'
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+        \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.vim$|'.$HOME.'/\(Library\|Music\)$',
         \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
         if executable('ack')
