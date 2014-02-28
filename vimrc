@@ -335,7 +335,7 @@ endif
     " }
 
     " Autoclose {
-        let g:AutoClosePairs_add = "<>"
+        au Filetype html,xml let g:AutoClosePairs_add = "<>"
     " }
 
     " JSON {
@@ -709,6 +709,10 @@ endif
         let g:jedi#goto_assignments_command = "<leader>ja"
 
         let g:jedi#popup_on_dot = 0
+    " }
+
+    " vim-json {
+        let g:vim_json_syntax_conceal = 0
     " }
 " }
 

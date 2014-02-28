@@ -108,3 +108,5 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-scriptease'
 
 Bundle 'tpope/vim-vinegar'
+" JSON highlighting and things
+Bundle 'elzr/vim-json'
