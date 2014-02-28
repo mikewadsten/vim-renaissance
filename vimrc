@@ -74,7 +74,7 @@ augroup END
 " Use = to close vinegar browser.
 augroup mikeVinegar
     autocmd!
-    autocmd FileType netrw nmap <buffer> <silent> = :bd<CR>
+    autocmd FileType netrw nmap <buffer> <silent> = :e #<CR>
 augroup END
 
 " core indentation settings
