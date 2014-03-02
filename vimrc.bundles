@@ -112,3 +112,5 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'elzr/vim-json'
 
 Bundle 'mikewadsten/vim-gitwildignore'
+
+Bundle 'zhaocai/GoldenView.Vim'
