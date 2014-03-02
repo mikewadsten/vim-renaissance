@@ -566,8 +566,7 @@ endif
             \   'right': [
             \       ['lineinfo'],
             \       ['percent'],
-            \       ['fileformat', 'fileencoding', 'filetype'],
-            \       ['tagbar']
+            \       ['fileformat', 'fileencoding', 'filetype']
             \   ]
             \ },
             \ 'component': {
@@ -582,7 +581,7 @@ endif
             \   'bufferline'    : 'MyBufferline',
             \   'fileformat'    : 'MyFileformat',
             \   'fileenconding' : 'MyFileencoding',
-            \   'filetype'      : 'MyFiletype'
+            \   'filetype'      : 'MyFiletype',
             \ },
             \ 'subseparator': {
             \   'left': '|', 'right': '|'
