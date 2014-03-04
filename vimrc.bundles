@@ -43,7 +43,7 @@ Bundle 'tpope/vim-surround'
 " Fuzzy finding FTW
 Bundle 'kien/ctrlp.vim'
 " Sublime Text-like multiple cursors
-Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-multiple-cursors'
 
 " Motion on speed
 Bundle 'Lokaltog/vim-easymotion'

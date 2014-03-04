@@ -713,6 +713,26 @@ endif
     " vim-json {
         let g:vim_json_syntax_conceal = 0
     " }
+
+    " vim-gitwildignore {
+        let g:gitwildignore_use_ls_files = 1
+    " }
+
+    " GoldenView.vim {
+        " I'm going to map my own keys.
+        let g:goldenview__enable_default_mapping = 0
+
+        " Default mapping to split.
+        nmap <silent> <C-L> <Plug>GoldenViewSplit
+
+        " C-P is for CtrlP, not GoldenView!
+        nmap <silent> <C-N> <Plug>GoldenViewNext
+        nmap <silent> <C-M> <Plug>GoldenViewPrevious
+
+        " Whatever these do...
+        nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
+        nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+    " }
 " }
 
 " auto correct ftw
