@@ -222,6 +222,12 @@ endif
         command! -bang Qa qa<bang>
     endif
 
+    " Buffer-like commands, but for tabs!
+    cnoreabbrev td tabclose
+    cnoreabbrev tp tabprevious
+    cnoreabbrev tn tabnext
+    cnoreabbrev tsp tab split
+
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
@@ -701,8 +707,8 @@ endif
     " }
 
     " jedi-vim {
-        let g:jedi#use_tabs_not_buffers = 0
-        let g:jedi#use_splits_not_buffers = "left"
+        "let g:jedi#use_tabs_not_buffers = 0
+        "let g:jedi#use_splits_not_buffers = "left"
         let g:jedi#documentation_command = ""
         let g:jedi#goto_definitions_command = "<leader>jd"
         let g:jedi#goto_assignments_command = "<leader>ja"
