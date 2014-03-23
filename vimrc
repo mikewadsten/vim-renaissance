@@ -192,6 +192,8 @@ endif
 
 " Key mappings {
     let mapleader = ','
+    " Experimentation time
+    "let mapleader = "\<Space>"
     let maplocalleader = "\\"
 
     " Move around in insert mode by holding down Ctrl.
