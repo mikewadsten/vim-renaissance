@@ -116,3 +116,10 @@ Bundle 'mikewadsten/vim-gitwildignore'
 Bundle 'zhaocai/GoldenView.Vim'
 
 Bundle 'terryma/vim-expand-region'
+
+" So that Vim gives me a hard time...
+Bundle 'takac/vim-hardtime'
+
+if v:version < 704
+    Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+endif

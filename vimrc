@@ -115,6 +115,7 @@ endif
     endif
 
     set backspace=indent,eol,start      " Backspace for dummies
+    set relativenumber                  " Show line numbers relative to position
     set number                          " Show line numbers
     set showmatch                       " Highlight matching parens/brackets
     set incsearch                       " Find results as you type
@@ -740,6 +741,16 @@ endif
         " Whatever these do...
         nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
         nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+    " }
+
+    " vim-hardtime {
+        let g:hardtime_default_on = 1
+    " }
+
+    " numbertoggle {
+        if v:version < 704
+            let g:NumberToggleTrigger = '<F2>'
+        endif
     " }
 " }
 
