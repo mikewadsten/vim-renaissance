@@ -34,8 +34,12 @@ if has('clipboard') && LINUX()
 endif
 
 if has('gui')
-    " Set font in MacVim
-    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14
+    if LINUX()
+        set guifont=Meslo\ LG\ M\ for\ Powerline\ 10
+    else
+        " Set font in MacVim
+        set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14
+    endif
 endif
 
 " Switch to current file directory automatically
@@ -75,6 +79,7 @@ augroup END
 augroup mikeVinegar
     autocmd!
     autocmd FileType netrw nmap <buffer> <silent> = :e #<CR>
+    autocmd FileType netrw nmap <buffer> <silent> <leader>p <C-w>z
 augroup END
 
 " core indentation settings
@@ -725,6 +730,8 @@ endif
 
     " vim-gitwildignore {
         let g:gitwildignore_use_ls_files = 1
+
+        let g:gitwildignore_patterns = {'/': ['*.pyc', '*.sw[op]', 'venv']}
     " }
 
     " GoldenView.vim {
@@ -743,14 +750,13 @@ endif
         nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
     " }
 
-    " vim-hardtime {
-        let g:hardtime_default_on = 1
-    " }
-
     " numbertoggle {
         if v:version < 704
             let g:NumberToggleTrigger = '<F2>'
         endif
+
+    " emmet.io {
+        nnoremap <leader>z <End> :call emmet#expandAbbr(3, "")<CR>
     " }
 " }
 
@@ -803,4 +809,10 @@ autocmd FileType vim            let g:AutoClosePairs_del .= '"'
         endfor
     endfunction
     call InitializeDirectories()
+" }
+
+" Work-specific things {
+    if filereadable(expand("~/.vimrc.digi"))
+        source ~/.vimrc.digi
+    endif
 " }

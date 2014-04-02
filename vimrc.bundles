@@ -79,6 +79,9 @@ Bundle 'tpope/vim-fugitive'
 " Web API access from Vim
 Bundle 'mattn/webapi-vim'
 
+" Emmet.io
+Bundle 'mattn/emmet-vim'
+
 " Python stuff
 Bundle 'python.vim'
 Bundle 'python_match.vim'
@@ -117,9 +120,10 @@ Bundle 'zhaocai/GoldenView.Vim'
 
 Bundle 'terryma/vim-expand-region'
 
-" So that Vim gives me a hard time...
-Bundle 'takac/vim-hardtime'
-
 if v:version < 704
     Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 endif
+
+" HTML and CSS editing made nice
+Bundle 'amirh/HTML-AutoCloseTag'
+Bundle 'gorodinskiy/vim-coloresque'
