@@ -127,3 +127,6 @@ endif
 " HTML and CSS editing made nice
 Bundle 'amirh/HTML-AutoCloseTag'
 Bundle 'gorodinskiy/vim-coloresque'
+
+" Pair mapping goodness from our lord and savior, Tim Pope
+Bundle 'tpope/vim-unimpaired'
