@@ -315,7 +315,7 @@ endif
 
     " delete to black hole register (can't paste it back in)
     nnoremap <leader>d "_dd
-    vnoremap <leader>d "_dd
+    vnoremap <leader>d "_d
     " screw you, shift key
     nnoremap ; :
 
