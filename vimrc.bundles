@@ -25,7 +25,7 @@ Bundle 'itchyny/lightline.vim'
 " List buffers
 Bundle 'bling/vim-bufferline'
 " Intensely orgasmic commenting
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
 " Remember folds
 Bundle 'vim-scripts/restore_view.vim'
 
@@ -131,3 +131,9 @@ Bundle 'gorodinskiy/vim-coloresque'
 " Pair mapping goodness from our lord and savior, Tim Pope
 Bundle 'tpope/vim-unimpaired'
 Bundle 'AndrewRadev/splitjoin.vim'
+
+Bundle 'tpope/vim-rsi'
+
+Bundle 'tpope/vim-commentary'
+
+Bundle 'tfnico/vim-gradle'

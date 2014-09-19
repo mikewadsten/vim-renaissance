@@ -321,6 +321,9 @@ endif
 
     " I don't want to press the shift key to force exit anymore.
     cabbrev q1 q!<CR>
+
+    " I have literally never used Ex mode. Make Q more useful
+    nnoremap Q @@
 " }
 
 " Plugins {
