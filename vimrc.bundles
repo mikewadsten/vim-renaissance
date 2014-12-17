@@ -137,3 +137,5 @@ Bundle 'tpope/vim-rsi'
 Bundle 'tpope/vim-commentary'
 
 Bundle 'tfnico/vim-gradle'
+
+Bundle 'groenewege/vim-less'

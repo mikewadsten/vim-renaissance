@@ -231,10 +231,10 @@ endif
     endif
 
     " Buffer-like commands, but for tabs!
-    cnoreabbrev td tabclose
-    cnoreabbrev tp tabprevious
-    cnoreabbrev tn tabnext
-    cnoreabbrev tsp tab split
+    " cnoreabbrev td tabclose
+    " cnoreabbrev tp tabprevious
+    " cnoreabbrev tn tabnext
+    " cnoreabbrev tsp tab split
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
