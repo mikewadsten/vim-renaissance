@@ -107,7 +107,7 @@ endif
         colorscheme solarized   " Solarized FTW
     endif
 
-    set noshowmode    " Display the current mode
+    set noshowmode    " Don't display the current mode; that's what lightline is for
 
     set cursorline  " Solarized does this reasonably well, so why not
 
@@ -122,7 +122,7 @@ endif
     set backspace=indent,eol,start      " Backspace for dummies
     set relativenumber                  " Show line numbers relative to position
     set number                          " Show line numbers
-    set showmatch                       " Highlight matching parens/brackets
+    set noshowmatch                     " This just slows down typing, ew ew ew
     set incsearch                       " Find results as you type
     set hlsearch                        " Highlight search terms
     set ignorecase                      " Case-insensitive search
@@ -152,6 +152,13 @@ endif
 
     set textwidth=79
     set colorcolumn=80
+
+    " Muchas gracias, @janko-m
+    " https://github.com/tpope/vim-sensible/pull/85
+    if v:version > 703 || v:version == 703 && has("patch541")
+        " Delete comment character when joining commented lines
+        set formatoptions+=j
+    endif
 
     if has('dialog_con')
         " Function to trim trailing whitespace, if it exists, and confirmed.
