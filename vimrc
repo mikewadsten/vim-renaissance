@@ -778,6 +778,9 @@ iabbrev th the
 " Don't auto-close double-quotes since those are comments.
 autocmd FileType vim            let g:AutoClosePairs_del .= '"'
 
+" Turns out quickfixes should be available via <CR>...
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
 " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
