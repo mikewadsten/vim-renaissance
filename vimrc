@@ -333,6 +333,37 @@ endif
     nnoremap Q @@
 " }
 
+" ctags, cscope keymappings {
+augroup mikeCscope
+    autocmd!
+
+    autocmd User Fugitive
+                \ let cscopefile=b:git_dir . '/cscope' |
+                \ let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h')) |
+                \ if filereadable(cscopefile) |
+                    \ exe "cs add " . cscopefile . ' ' . rootdir |
+                \ endif |
+augroup END
+
+if executable("cscope")
+    " Use both cscope and ctags for 'ctrl-]', ':ta', and 'vim -t'
+    set cscopetag
+
+    " check cscope for definition of a symbol before checking ctags - if 1
+    set csto=0
+
+    " show messages when cscope db is added
+    set nocscopeverbose
+
+    " some key mappings. They start with Ctrl-Space
+    for cmd in ['s', 'g', 'c', 't', 'e', 'd']
+        exe "nnoremap <C-@>" . cmd . " :cs find " . cmd . " <C-R>=expand('<cword>')<CR><CR>"
+    endfor
+    nnoremap <C-@>f :cs find f <C-R>=expand('<cfile>')<CR><CR>
+    nnoremap <C-@>i :cs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+endif
+
+" }
 " Plugins {
     " Omnicompletion (not a plugin, really) {
         if has("autocmd") && exists("+omnifunc")
