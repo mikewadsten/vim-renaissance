@@ -116,8 +116,6 @@ Bundle 'elzr/vim-json'
 
 Bundle 'mikewadsten/vim-gitwildignore'
 
-Bundle 'zhaocai/GoldenView.Vim'
-
 Bundle 'terryma/vim-expand-region'
 
 if v:version < 704
