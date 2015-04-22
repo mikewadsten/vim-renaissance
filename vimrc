@@ -21,6 +21,11 @@ if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
 endif
 
+" Set vim-renaissance onto the runtime path.
+if isdirectory(expand("~/personal/dotfiles/vim-renaissance/compiler"))
+    execute "set rtp+=" . expand("~/personal/dotfiles/vim-renaissance")
+endif
+
 set background=dark         " This is generally the case
 " set background=light       " Let there be light! (optional)
 filetype plugin indent on   " Auto-detect file types
