@@ -360,12 +360,31 @@ if executable("cscope")
     " show messages when cscope db is added
     set nocscopeverbose
 
-    " some key mappings. They start with Ctrl-Space
-    for cmd in ['s', 'g', 'c', 't', 'e', 'd']
-        exe "nnoremap <C-@>" . cmd . " :cs find " . cmd . " <C-R>=expand('<cword>')<CR><CR>"
-    endfor
-    nnoremap <C-@>f :cs find f <C-R>=expand('<cfile>')<CR><CR>
-    nnoremap <C-@>i :cs find i ^<C-R>=expand('<cfile>')<CR>$<CR>
+    function! PromptCscope()
+        let l:shortcuts = ['s', 'g', 't', 'c', 'd', 'e', 'f', 'i']
+        let l:prompt = "&symbol\n&gdefinition\n&text\n&calls\ncalle&d by this\n&egrep\ngo to &file\n&includes"
+
+        let l:commonarg = expand('<cword>')
+        let l:csfindargs = {
+                    \'s': l:commonarg,
+                    \'g': l:commonarg,
+                    \'t': l:commonarg,
+                    \'c': l:commonarg,
+                    \'d': l:commonarg,
+                    \'e': l:commonarg,
+                    \'f': expand('<cfile>'),
+                    \'i': '^' . expand('<cfile>') . '$'
+                    \}
+
+        let which = confirm("cscope search type?", l:prompt, 0)
+        if which
+            let short = l:shortcuts[which - 1]
+            execute "cs find " . short . " " . l:csfindargs[short]
+        endif
+    endfunction
+
+    " Ctrl-Space brings up the prompt.
+    nnoremap <silent> <C-@> :call PromptCscope()<CR>
 endif
 
 " }
