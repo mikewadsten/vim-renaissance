@@ -128,7 +128,9 @@ Bundle 'gorodinskiy/vim-coloresque'
 
 " Pair mapping goodness from our lord and savior, Tim Pope
 Bundle 'tpope/vim-unimpaired'
+
 Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'AndrewRadev/switch.vim'
 
 Bundle 'tpope/vim-rsi'
 

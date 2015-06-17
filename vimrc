@@ -373,7 +373,7 @@ if executable("cscope")
                     \'d': l:commonarg,
                     \'e': l:commonarg,
                     \'f': expand('<cfile>'),
-                    \'i': '^' . expand('<cfile>') . '$'
+                    \'i': expand('<cfile>')
                     \}
 
         let which = confirm("cscope search type?", l:prompt, 0)
@@ -806,6 +806,19 @@ endif
 
     " emmet.io {
         nnoremap <leader>z <End> :call emmet#expandAbbr(3, "")<CR>
+    " }
+
+    " switch.vim {
+        nnoremap <silent> <BS> :Switch<CR>
+
+        " CppUTest test macros
+        let s:switch_cpputest = {
+                    \ '\<TEST\>': 'IGNORE_TEST',
+                    \ '\<IGNORE_TEST\>': 'TEST' }
+        autocmd FileType cpp let b:switch_custom_definitions =
+                    \ [
+                    \   s:switch_cpputest
+                    \ ]
     " }
 " }
 
