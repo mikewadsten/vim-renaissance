@@ -820,6 +820,11 @@ endif
                     \   s:switch_cpputest
                     \ ]
     " }
+
+    " ag.vim {
+        nnoremap <Leader>a :Ag<Space>
+        nmap <Leader>g <Leader>a
+    " }
 " }
 
 " auto correct ftw
@@ -874,6 +879,20 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
         endfor
     endfunction
     call InitializeDirectories()
+" }
+
+" Neovim {
+if has('nvim')
+    function! s:HandleTermOpen()
+        " Disable spell-checking, line highlighting, line numbers.
+        setlocal nospell nocursorline colorcolumn=
+
+        " Map the Escape key to return to normal mode from "insert."
+        tnoremap <buffer> <Esc> <C-\><C-n>
+    endfunction
+
+    autocmd TermOpen * call s:HandleTermOpen()
+endif
 " }
 
 " Work-specific things {

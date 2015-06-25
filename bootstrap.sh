@@ -67,9 +67,17 @@ setup_vundle() {
 }
 
 create_symlinks() {
-    endpath="$HOME/vim-renaissance"
+    if [ -d "$HOME/personal/dotfiles/vim-renaissance" ]; then
+        # Use new, more common location.
+        endpath="$HOME/personal/dotfiles/vim-renaissance"
+    else
+        # Old outdated location. Left in for compatibility.
+        endpath="$HOME/vim-renaissance"
+    fi
 
     lnif "$endpath/vimrc"           "$HOME/.vimrc"
+    # Neovim!
+    lnif "$HOME/.vimrc"             "$HOME/.nvimrc"
     lnif "$endpath/vimrc.bundles"   "$HOME/.vimrc.bundles"
 
     success "$1"
