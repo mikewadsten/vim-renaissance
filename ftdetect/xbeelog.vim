@@ -1,1 +1,1 @@
-au BufNewFile,BufRead config.rci,*.rci set filetype=rciconf | setl nospell
+au BufNewFile,BufRead *.xbee.log,xbee.log set filetype=xbeelog | setl nospell
