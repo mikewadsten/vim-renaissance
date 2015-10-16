@@ -338,19 +338,46 @@ endif
     nnoremap Q @@
 " }
 
-" ctags, cscope keymappings {
+" ctags, cscope, gtags keymappings {
 augroup mikeCscope
     autocmd!
 
-    autocmd User Fugitive
-                \ let cscopefile=b:git_dir . '/cscope' |
-                \ let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h')) |
-                \ if filereadable(cscopefile) |
-                    \ exe "cs add " . cscopefile . ' ' . rootdir |
-                \ endif |
+    function s:AddCscopeConn()
+        let cscopefile=b:git_dir . '/cscope'
+        let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h'))
+
+        if filereadable(cscopefile)
+            try
+                exe "cs add " . cscopefile . " " . rootdir
+            catch
+            endtry
+        endif
+    endfunction
+
+    function s:AddGtagsCscopeConn()
+        setl cscopeprg=gtags-cscope
+
+        let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h'))
+        let tagsfile=rootdir . "/GTAGS"
+
+        if filereadable(tagsfile)
+            try
+                exe "cs add " . tagsfile . " " . rootdir . " -ia"
+            catch
+            endtry
+        endif
+    endfunction
+
+    if executable("gtags-cscope")
+        " GTAGS > cscope. Probably.
+        autocmd User Fugitive call s:AddGtagsCscopeConn()
+    elseif executable("cscope")
+        " cscope is alright
+        autocmd User Fugitive call s:AddCscopeConn()
+    endif
 augroup END
 
-if executable("cscope")
+if executable("cscope") || executable("gtags-cscope")
     " Use both cscope and ctags for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
 
