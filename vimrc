@@ -103,7 +103,7 @@ endif
     if &term == 'xterm' || &term == 'screen'
         set t_Co=256 " Enable 256 colors. If I start using tmux, may need to revisit this.
     endif
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if filereadable(expand("~/.vim/plugged/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans = s:use_terminal_background
         let g:solarized_contrast="high"
@@ -558,7 +558,7 @@ endif
 
     " Snippets {
         " Use honza's snippets.
-        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+        let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
         " Enable neosnippet snipmate compatibility mode
         let g:neosnippet#enable_snipmate_compatibility = 1

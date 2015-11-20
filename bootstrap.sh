@@ -54,13 +54,11 @@ do_backup() {
     fi
 }
 
-setup_vundle() {
-    if [ ! -d "$HOME/.vim/bundle" ]; then
-        mkdir -p "$HOME/.vim/bundle"
-    fi
-
-    if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-        git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
+setup_vimplug() {
+    if [ ! -d "$HOME/.nvim/autoload" ]; then
+        mkdir -p "$HOME/.nvim"
+        mkdir -p "$HOME/.vim/autoload"
+        ln -sf "$HOME/.vim/autoload" "$HOME/.nvim/autoload"
     fi
 
     success "$1"
@@ -76,9 +74,9 @@ create_symlinks() {
     fi
 
     lnif "$endpath/vimrc"           "$HOME/.vimrc"
+    lnif "$endpath/vimrc.bundles"   "$HOME/.vimrc.bundles"
     # Neovim!
     lnif "$HOME/.vimrc"             "$HOME/.nvimrc"
-    lnif "$endpath/vimrc.bundles"   "$HOME/.vimrc.bundles"
 
     success "$1"
 }
@@ -99,9 +97,9 @@ do_backup "Your old vim stuff is backed up, to e.g. .vimrc.`date +%Y%m%d%S`" \
     "$HOME/.vimrc" \
     "$HOME/.vimrc.bundles"
 
-create_symlinks "Setting up vim symlinks"
+create_symlinks "Setting up vim and nvim symlinks"
 
-setup_vundle    "Vundle is, or should be, set up now."
+setup_vimplug   "Vim files should be set up now."
 
 setup_bundles   "Installed/updated plugins using Vundle"
 

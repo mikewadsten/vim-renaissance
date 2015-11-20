@@ -3,140 +3,145 @@ set nocp
 " Suppress csapprox warnings when using bootstrap.sh
 set t_Co=256
 
-" Set up bundle support
-filetype off
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+" Set up vim-plug support
+if has('nvim')
+    let s:plug_path = '~/.nvim/autoload/plug.vim'
+else
+    let s:plug_path = '~/.vim/autoload/plug.vim'
+endif
 
-" Bundling dependencies {
-    " This one is undeniably necessary
-    Bundle 'gmarik/vundle'
-    " spf13 uses these, I guess I'll include them
-    Bundle 'MarcWeber/vim-addon-mw-utils'
-    Bundle 'tomtom/tlib_vim'
-" }
+if empty(glob(s:plug_path))
+    echo "Looks like the first time setup for vim-plug..."
+    silent exe '!curl -fLo ' . s:plug_path ' --create-dirs ' .
+                \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " Solarized color scheme
-Bundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " A most excellent status line replacement
-"Bundle 'bling/vim-airline'
+"Plug 'bling/vim-airline'
 " TODO: Look into itchyny/lightline.vim as a simpler statusline
-Bundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " List buffers
-Bundle 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 " Intensely orgasmic commenting
-"Bundle 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
 " Remember folds
-Bundle 'vim-scripts/restore_view.vim'
+Plug 'vim-scripts/restore_view.vim'
 
 " Snippets and autocomplete
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
-Bundle 'honza/vim-snippets'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
 
 " Auto-close pairs
-Bundle 'Townk/vim-autoclose'
+Plug 'Townk/vim-autoclose'
 " Quoting/parenthesizing made simple
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Fuzzy finding FTW
-Bundle 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Sublime Text-like multiple cursors
-"Bundle 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 " Motion on speed
-Bundle 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Decent colors workings
-Bundle 'godlygeek/csapprox'
+Plug 'godlygeek/csapprox'
 
 " Undoing made easy?
-Bundle 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " Visual indentation guides
-Bundle 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 " Git diff in sign column
-Bundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " For when you just can't spell correctly.
-Bundle 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 " Substitution previews
-Bundle 'osyo-manga/vim-over'
+Plug 'osyo-manga/vim-over'
 " Even better motion
-Bundle 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 " Text filtering and alignment
-Bundle 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 " Markdown files
-Bundle 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 " Preview
-Bundle 'spf13/vim-preview'
+Plug 'spf13/vim-preview'
 
 " Git wrapper
-Bundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Web API access from Vim
-Bundle 'mattn/webapi-vim'
+Plug 'mattn/webapi-vim'
 
 " Emmet.io
-Bundle 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " Python stuff
-Bundle 'python.vim'
-Bundle 'python_match.vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'nvie/vim-flake8'
-Bundle 'olethanh/Vim-nosecompiler'
+Plug 'python.vim'
+Plug 'python_match.vim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'nvie/vim-flake8'
+Plug 'olethanh/Vim-nosecompiler'
 if has("python")
-    Bundle 'mikewadsten/Conque-Shell'
+    Plug 'mikewadsten/Conque-Shell'
 endif
 " TODO: Add python-mode if I really feel like it
 
 " Repeat plugin actions with .
-Bundle 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " tmux status line theme generator
-Bundle 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 " Tmux file syntax highlighting
-Bundle 'peterhoeg/vim-tmux'
+Plug 'peterhoeg/vim-tmux'
 
 " Asynchronous build and test dispatching
-Bundle 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 
 " ctags integration
-Bundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Stuff, and things.
-Bundle 'tpope/vim-scriptease'
+Plug 'tpope/vim-scriptease'
 
-Bundle 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 " JSON highlighting and things
-Bundle 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
-Bundle 'mikewadsten/vim-gitwildignore'
+Plug 'mikewadsten/vim-gitwildignore'
 
-Bundle 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 
 if v:version < 704
-    Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
 endif
 
 " HTML and CSS editing made nice
-Bundle 'amirh/HTML-AutoCloseTag'
-Bundle 'gorodinskiy/vim-coloresque'
+Plug 'amirh/HTML-AutoCloseTag'
+Plug 'gorodinskiy/vim-coloresque'
 
 " Pair mapping goodness from our lord and savior, Tim Pope
-Bundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'AndrewRadev/switch.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
 
-Bundle 'tpope/vim-rsi'
+Plug 'tpope/vim-rsi'
 
-Bundle 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-Bundle 'tfnico/vim-gradle'
+Plug 'tfnico/vim-gradle'
 
-Bundle 'groenewege/vim-less'
-Bundle 'rking/ag.vim'
+Plug 'groenewege/vim-less'
+Plug 'rking/ag.vim'
+
+call plug#end()
