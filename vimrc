@@ -343,11 +343,13 @@ augroup mikeCscope
     autocmd!
 
     function s:AddCscopeConn()
+        setl cscopeprg=cscope
         let cscopefile=b:git_dir . '/cscope'
         let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h'))
 
         if filereadable(cscopefile)
             try
+                exe "cs kill -1"
                 exe "cs add " . cscopefile . " " . rootdir
             catch
             endtry
@@ -362,15 +364,20 @@ augroup mikeCscope
 
         if filereadable(tagsfile)
             try
+                exe "cs kill -1"
                 exe "cs add " . tagsfile . " " . rootdir . " -ia"
             catch
             endtry
         endif
     endfunction
 
+    command MikeInitCscope call s:AddCscopeConn()
+
     if executable("gtags-cscope")
         " GTAGS > cscope. Probably.
         autocmd User Fugitive call s:AddGtagsCscopeConn()
+
+        command MikeInitCscopeGtags call s:AddGtagsCscopeConn()
     elseif executable("cscope")
         " cscope is alright
         autocmd User Fugitive call s:AddCscopeConn()
