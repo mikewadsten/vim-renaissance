@@ -326,8 +326,7 @@ endif
     " while we're at it, let's keep the arrows disabled
     noremap <Up> <nop>
     noremap <Down> <nop>
-    noremap <Left> <nop>
-    noremap <Right> <nop>
+    " but not left and right, which move twixt buffers
 
     " delete to black hole register (can't paste it back in)
     nnoremap <leader>d "_dd
