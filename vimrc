@@ -248,6 +248,10 @@ endif
     " cnoreabbrev tn tabnext
     " cnoreabbrev tsp tab split
 
+    " Make arrow keys useful
+    nmap <left> :bp<CR>
+    nmap <right> :bn<CR>
+
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
