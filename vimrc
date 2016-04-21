@@ -368,6 +368,10 @@ augroup mikeCscope
         if filereadable(tagsfile)
             try
                 exe "cs kill -1"
+                " NOTE: These are what actually get the integration with
+                " gtags-cscope working, it seems... Yay GNU!
+                let $GTAGSROOT = rootdir
+                let $GTAGSDBPATH = rootdir
                 exe "cs add " . tagsfile . " " . rootdir . " -ia"
             catch
             endtry
