@@ -343,9 +343,10 @@ endif
 
 " ctags, cscope, gtags keymappings {
 augroup mikeCscope
-    autocmd!
-
-    function s:AddCscopeConn()
+    function! s:AddCscopeConn()
+        if exists('g:mike_stop_autocscope') && g:mike_stop_autocscope == 1
+            return
+        endif
         setl cscopeprg=cscope
         let cscopefile=b:git_dir . '/cscope'
         let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h'))
@@ -359,7 +360,10 @@ augroup mikeCscope
         endif
     endfunction
 
-    function s:AddGtagsCscopeConn()
+    function! s:AddGtagsCscopeConn()
+        if exists('g:mike_stop_autocscope') && g:mike_stop_autocscope == 1
+            return
+        endif
         setl cscopeprg=gtags-cscope
 
         let rootdir=simplify(fnamemodify(b:git_dir, ':p:h:h'))
@@ -378,7 +382,7 @@ augroup mikeCscope
         endif
     endfunction
 
-    command MikeInitCscope call s:AddCscopeConn()
+    command! MikeInitCscope call s:AddCscopeConn()
 
     if executable("gtags-cscope")
         " GTAGS > cscope. Probably.
@@ -401,11 +405,9 @@ if executable("cscope") || executable("gtags-cscope")
     " show messages when cscope db is added
     set nocscopeverbose
 
-    function! PromptCscope()
-        let l:shortcuts = ['s', 'g', 't', 'c', 'd', 'e', 'f', 'i']
-        let l:prompt = "&symbol\n&gdefinition\n&text\n&calls\ncalle&d by this\n&egrep\ngo to &file\n&includes"
-
+    function! s:mike_handleCscope(key)
         let l:commonarg = expand('<cword>')
+        let l:cfile = expand('<cfile>')
         let l:csfindargs = {
                     \'s': l:commonarg,
                     \'g': l:commonarg,
@@ -413,19 +415,47 @@ if executable("cscope") || executable("gtags-cscope")
                     \'c': l:commonarg,
                     \'d': l:commonarg,
                     \'e': l:commonarg,
-                    \'f': expand('<cfile>'),
-                    \'i': expand('<cfile>')
+                    \'f': l:cfile,
+                    \'i': l:cfile
                     \}
 
+        let value = l:csfindargs[a:key]
+        if value == ''
+            echo "No cword or cfile, you bozo"
+            return
+        endif
+
+        try
+            execute "cs find " . a:key . " " . value
+        catch /.*/
+            echo "cscope: " . v:exception
+        endtry
+    endfunction
+
+    function! PromptCscope()
+        let l:shortcuts = ['s', 'g', 't', 'c', 'd', 'e', 'f', 'i']
+        let l:prompt = "&symbol\n&gdefinition\n&text\n&calls\ncalle&d by this\n&egrep\ngo to &file\n&includes"
         let which = confirm("cscope search type?", l:prompt, 0)
         if which
             let short = l:shortcuts[which - 1]
-            execute "cs find " . short . " " . l:csfindargs[short]
+            call <SID>mike_handleCscope(short)
         endif
     endfunction
 
-    " Ctrl-Space brings up the prompt.
-    nnoremap <silent> <C-@> :call PromptCscope()<CR>
+    " Ctrl-Space (Ctrl-)?[?<Space>] brings up the prompt.
+    nnoremap <silent> <C-@>? :call PromptCscope()<CR>
+    nnoremap <silent> <C-@><Space> :call PromptCscope()<CR>
+    nnoremap <silent> <C-@><C-?> :call PromptCscope()<CR>
+    nnoremap <silent> <C-@><C-@> :call PromptCscope()<CR>
+    " Mappings to do cscope operations. My muscle memory is improving.
+    nnoremap <silent> <C-@>s :call <SID>mike_handleCscope('s')<CR>
+    nnoremap <silent> <C-@>g :call <SID>mike_handleCscope('g')<CR>
+    nnoremap <silent> <C-@>t :call <SID>mike_handleCscope('t')<CR>
+    nnoremap <silent> <C-@>c :call <SID>mike_handleCscope('c')<CR>
+    nnoremap <silent> <C-@>d :call <SID>mike_handleCscope('d')<CR>
+    nnoremap <silent> <C-@>e :call <SID>mike_handleCscope('e')<CR>
+    nnoremap <silent> <C-@>f :call <SID>mike_handleCscope('f')<CR>
+    nnoremap <silent> <C-@>i :call <SID>mike_handleCscope('i')<CR>
 endif
 
 " }
