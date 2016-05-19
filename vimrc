@@ -258,6 +258,9 @@ endif
     " Indent in visual mode.
     vnoremap < <gv
     vnoremap > >gv
+    " I've become addicted to hitting q for everything...
+    " and who starts recording a macro when IN visual mode?
+    vnoremap q <Esc>
 
     " Allow repeat operator to work on visual selection.
     " http://stackoverflow.com/a/8064607/127816
@@ -927,3 +930,30 @@ endif
         source ~/.vimrc.digi
     endif
 " }
+
+" Recent experimentation
+hi LineNR ctermbg=NONE ctermfg=237
+hi VertSplit ctermbg=236 ctermfg=236
+
+" The following content provided by:
+" howivim airblade
+
+hi clear StatusLine
+hi clear StatusLineNC
+hi StatusLine   term=bold cterm=bold ctermfg=White ctermbg=235
+hi StatusLineNC term=bold cterm=bold ctermfg=White ctermbg=236
+hi User1                      ctermfg=4          guifg=#40ffff            " Identifier
+hi User2                      ctermfg=2 gui=bold guifg=#ffff60            " Statement
+hi User3 term=bold cterm=bold ctermfg=1          guifg=White   guibg=Red  " Error
+hi User4                      ctermfg=1          guifg=Orange             " Special
+hi User5                      ctermfg=10         guifg=#80a0ff            " Comment
+hi User6 term=bold cterm=bold ctermfg=1          guifg=Red                " WarningMsg
+set laststatus=2
+set stl=%6*%m%r%*%5*%{expand('%:p:h')}/%1*%t%=line\ %l\ (%p%%)
+
+nnoremap <Tab> <C-W>w
+nnoremap <S-Tab> <C-W>W
+
+" Retain cursor position when visually yanking.
+vnoremap <silent> y 'my"' . v:register . 'y`y'
+vnoremap <silent> Y 'my"' . v:register . 'Y`y'

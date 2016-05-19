@@ -24,9 +24,9 @@ Plug 'altercation/vim-colors-solarized'
 " A most excellent status line replacement
 "Plug 'bling/vim-airline'
 " TODO: Look into itchyny/lightline.vim as a simpler statusline
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 " List buffers
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 " Intensely orgasmic commenting
 "Plug 'scrooloose/nerdcommenter'
 " Remember folds
@@ -59,6 +59,7 @@ Plug 'mbbill/undotree'
 " Visual indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
 " Git diff in sign column
+let g:gitgutter_sign_column_always = 1
 Plug 'airblade/vim-gitgutter'
 
 " For when you just can't spell correctly.
@@ -137,6 +138,8 @@ Plug 'AndrewRadev/switch.vim'
 
 Plug 'tpope/vim-rsi'
 
+" Disable deprecated mapping
+let g:commentary_map_backslash = 0
 Plug 'tpope/vim-commentary'
 
 Plug 'tfnico/vim-gradle'
