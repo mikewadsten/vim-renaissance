@@ -659,6 +659,9 @@ endif
     " }
 
     " Lightline.vim {
+        " TOTAL HACK TODO XXX FIXME
+    if get(g:, 'loaded_lightline')
+
         " Bufferline configuration
         let g:bufferline_echo = 0  " Hide bufferline at the moment
 
@@ -792,6 +795,9 @@ endif
             let g:lightline.fname = a:fname
             return lightline#statusline(0)
         endfunction
+
+    " END TOTAL HACK TODO XXX FIXME
+    endif
     " }
 
     " CtrlP {

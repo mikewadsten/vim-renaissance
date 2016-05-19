@@ -9,7 +9,7 @@ distribution.
 
 Feast your eyes on this screenshot:
 
-![vim-renaissance screenshot](screenshot01.png)
+![vim-renaissance screenshot](screenshot02.png)
 
 ## How do I get this deliciousness?
 
