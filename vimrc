@@ -214,14 +214,6 @@ endif
     "let mapleader = "\<Space>"
     let maplocalleader = "\\"
 
-    " Move around in insert mode by holding down Ctrl.
-    " (I'd prefer Alt, but that doesn't work well...)
-    " This needs to be ^H and not <C-h> because <C-h> is backspace
-    inoremap  <C-o>h
-    inoremap <C-j> <C-o>j
-    inoremap <C-k> <C-o>k
-    inoremap <C-l> <C-o>l
-
     " Navigate through wrapped lines by going to the next row, not line.
     noremap j gj
     noremap k gk
@@ -241,16 +233,6 @@ endif
         command! -bang QA qa<bang>
         command! -bang Qa qa<bang>
     endif
-
-    " Buffer-like commands, but for tabs!
-    " cnoreabbrev td tabclose
-    " cnoreabbrev tp tabprevious
-    " cnoreabbrev tn tabnext
-    " cnoreabbrev tsp tab split
-
-    " Make arrow keys useful
-    nmap <left> :bp<CR>
-    nmap <right> :bn<CR>
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -291,38 +273,12 @@ endif
     map <leader>es :sp %%
     map <leader>ev :vsp %%
 
-    " Display all lines with keyword under cursor, and ask which one
-    " to jump to.
-    nmap <leader>ff [I:let nr = input("Which one? (Ctrl-C to abort):")
-                \<Bar>exe "normal " . nr . "[\t"<CR>
-
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
-
-    " easy line movement
-    " up... (+ requires shift but = doesn't work)
-    "nnoremap + ddkP
-    " and down
-    "nnoremap - ddp
-
-    " ctrl-u to uppercase the current word when in normal mode
-    " mark (k), upper case the word, go back to (k)
-    nnoremap <c-u> mkviwU<esc>`k
-
-    " easy vimrc editing
-    nnoremap <leader>EV :split $MYVIMRC<CR>
-    nnoremap <leader>SV :source $MYVIMRC<CR>
-                \ :echo "Reloaded configuration from" expand("$MYVIMRC")<CR>
-
     " strong h and l movement
     nnoremap H 0
     nnoremap L $
 
     " because Escape is way over there
     inoremap jk <esc>
-    " let's learn this mapping the hard way
-    "inoremap <esc> <nop>
     " while we're at it, let's keep the arrows disabled
     noremap <Up> <nop>
     noremap <Down> <nop>
